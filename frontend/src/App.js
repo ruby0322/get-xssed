@@ -45,8 +45,6 @@ const App = () => {
           top: 0,
           zIndex: 1,
           width: '100%',
-          display: 'flex',
-          alignItems: 'center',
         }}
       >
         <Menu
