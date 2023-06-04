@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useParam } from 'react-dom-router';
+
 // import instance from "../axios";
 import { Descriptions } from "antd";
 
 const PostPage = () => {
+  const postId = useParam('postId');
   const exampleTitle = "Quant Intro";
   const exampleParagraph = "Quant, short for quantitative analysis or quantitative trading, \
   refers to the application of mathematical and statistical models to analyze financial markets \
@@ -35,9 +38,7 @@ const PostPage = () => {
         {exampleTitle}
       </Descriptions.Item>
       <Descriptions.Item label="Content" contentStyle={{"font-size": "18px"}} >
-        <div style={{"overflow": "scroll"}}>
-          {exampleParagraph}
-        </div>
+        {exampleParagraph}
       </Descriptions.Item>
     </Descriptions>
   );
