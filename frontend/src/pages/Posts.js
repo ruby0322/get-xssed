@@ -16,7 +16,7 @@ const Posts = () => {
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            const filtered = postsData.filter((post) =>
+            const filtered = posts.filter((post) =>
                 post.title.toLowerCase().includes(searchTerm.toLowerCase())
             );
             setSearchResult(`Result of "${searchTerm}":`);
@@ -56,13 +56,12 @@ const Posts = () => {
                 height: '100%',
                 flexWrap: 'wrap',
                 gap: '0.5rem'
-            }}
-            >
+            }}>
                 {
                     filteredPosts.map((post, index) => (
                         <Post title={post.title} content={post.content} index={index} key={index} />
-                        ))
-                    }
+                    ))
+                }
             </div>
         </div>
         </>
