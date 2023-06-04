@@ -3,6 +3,7 @@ import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import Profile from './pages/Profile';
 import Home from './pages/Home';
 import Posts from "./pages/Posts";
+import PostPage from "./pages/PostPage";
 
 const { Header, Content, Footer } = Layout;
 
@@ -56,24 +57,27 @@ const App = () => {
         />
       </Header>
       <Content
-        style={{
-          margin: '24px 16px',
-          padding: 24,
-        }}
+          style={{
+              height: '100%',
+              margin: '24px 16px',
+              padding: 24,
+              overflow: 'scroll',
+          }}
       >
         <Routes>
           <Route exact path="/*" element={<Home />} />
           <Route exact path="/profile/" element={<Profile />} />
           <Route exact path="/posts/" element={<Posts />} />
+          <Route exact path="/posts/:postId" element={<PostPage />} />
         </Routes>
       </Content>
-      <Footer
+      {/* <Footer
         style={{
           textAlign: 'center',
         }}
       >
         Get XSS'd
-      </Footer>
+      </Footer> */}
     </Layout>
   );
 };

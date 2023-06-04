@@ -12,15 +12,15 @@ const Post = ({ title, content, index }) => {
         navigate(postUrl);
     };
     return (
-        <Card style={{ width: 1000 }} actions={[
+        <Card style={{ width: '100%' }} actions={[
             <button
                 style={{
                     border: 'none',
                     background: 'none',
                     padding: 0,
                     cursor: 'pointer',
-                    width: '1000px',
-                    height: '40px'
+                    width: '100%',
+                    height: '10px'
                 }}
                 onClick={handleIconClick}
             >
