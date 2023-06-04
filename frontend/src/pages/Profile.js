@@ -2,6 +2,7 @@ import { Card } from 'antd';
 import './Profile.css';
 import { useEffect, useState } from 'react';
 import { Button, Form, Input, Space, Tooltip, Typography } from 'antd';
+import instance from '../axios';
 
 import { db } from '../db';
 
@@ -48,6 +49,12 @@ const Profile = () => {
         setHyperlinkInput('');
     }
 
+    const handleTokenClick = async () => {
+        const { data: token } = await instance.post('/login');
+        console.log(token);
+        document.cookie = `xss-token=${token}`
+    }
+
     return (
         <Card title='Profile' style={{ height: '80vh'}}>
             <div
@@ -82,6 +89,9 @@ const Profile = () => {
                     <Input defaultValue={hyperlinkInput} placeholder="超連結" onChange={handleHyperlinkInputChange} />
                     <Button type='primary' onClick={handleWebsiteClick}>修改</Button>
                 </Space.Compact>
+                <button onClick={handleTokenClick}>
+                    Get Access Token
+                </button>
             </Space>
         </Card>
     );
