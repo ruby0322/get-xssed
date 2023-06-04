@@ -38,7 +38,7 @@ const App = () => {
   };
 
   return (
-    <Layout style={{height: '100vh'}}>
+    <Layout style={{ height: '100vh' }}>
       <Header
         style={{
           position: 'sticky',
@@ -58,16 +58,16 @@ const App = () => {
         />
       </Header>
       <Content
-          style={{
-              margin: '24px 16px',
-              padding: 24,
-          }}
+        style={{
+          margin: '24px 16px',
+          padding: 24,
+        }}
       >
         <Routes>
           <Route exact path="/*" element={<Home />} />
           <Route exact path="/profile/" element={<Profile />} />
           <Route exact path="/posts/" element={<Posts />} />
-        </Routes>  
+        </Routes>
       </Content>
       <Footer
         style={{
