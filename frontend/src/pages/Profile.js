@@ -1,19 +1,17 @@
 import { Card } from 'antd';
 import './Profile.css';
-import { Image } from 'antd';
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
 import { Button, Form, Input, Space, Tooltip, Typography } from 'antd';
 
-import { SearchOutlined } from '@ant-design/icons';
-
-
-const { Search } = Input;
+import { db } from '../db';
 
 const Profile = () => {
 
+    useEffect(() => {
+    }, []);
+
     const [username, setUsername] = useState('');
-    const [imgUrl, setImgUrl] = useState('https://wallpaperaccess.com/full/275808.jpg');
+    const [imgUrl, setImgUrl] = useState('');
     const [displayText, setDisplayText] = useState('');
     const [hyperlink, setHyperlink] = useState('');
 
@@ -63,7 +61,7 @@ const Profile = () => {
             <div>
                 <ul>
                     <li>
-                        @{username}
+                        @ {username}
                     </li>
                     <li>
                         <a href={hyperlink}>{displayText}</a>

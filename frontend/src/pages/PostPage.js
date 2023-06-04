@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParam } from 'react-dom-router';
+import { useParams } from 'react-router-dom';
 
 // import instance from "../axios";
 import { Descriptions } from "antd";
 
 const PostPage = () => {
-  const postId = useParam('postId');
+  const { postId } = useParams();
+  console.log('postId => ', postId);
   const exampleTitle = "Quant Intro";
   const exampleParagraph = "Quant, short for quantitative analysis or quantitative trading, \
   refers to the application of mathematical and statistical models to analyze financial markets \

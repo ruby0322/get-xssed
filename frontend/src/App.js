@@ -57,25 +57,18 @@ const App = () => {
         />
       </Header>
       <Content
-<<<<<<< HEAD
           style={{
               height: '100%',
               margin: '24px 16px',
               padding: 24,
               overflow: 'scroll',
           }}
-=======
-        style={{
-          margin: '24px 16px',
-          padding: 24,
-        }}
->>>>>>> b5b7527520871e8b41e01299233a61a0198e2b8b
       >
         <Routes>
           <Route exact path="/*" element={<Home />} />
           <Route exact path="/profile/" element={<Profile />} />
           <Route exact path="/posts/" element={<Posts />} />
-          <Route exact path="/posts/$postId" element={<PostPage />} />
+          <Route exact path="/posts/:postId" element={<PostPage />} />
         </Routes>
       </Content>
       {/* <Footer

@@ -24,7 +24,7 @@ const Posts = () => {
             }}>
                 {
                     postsData.map((post, index) => (
-                        <Post title={post.title} content={post.content} index={`post-${index}`} key={index} />
+                        <Post title={post.title} content={post.content} index={index} key={index} />
                     ))
                 }
             </div >
