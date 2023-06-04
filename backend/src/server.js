@@ -1,7 +1,7 @@
 import express, { application } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import { db } from "db";
+import { db } from "./db";
 
 const app = express();
 const port = process.env.PORT || 4000;
