@@ -11,6 +11,7 @@ const XssContext = createContext({
   updateUsername: () => { },
   updateImgUrl: () => { },
   updateHyperlink: () => {},
+  getPost: () => {},
 });
 
 const XssProvider = (props) => {
@@ -21,6 +22,7 @@ const XssProvider = (props) => {
   const [hyperlink, setHyperlink] = useState('');
 
   const [posts, setPosts] = useState([]);
+  const [postDict, setPostDict] = useState({});
 
   const login = async () => {
     const { data: user } = await instance.get('/user');
@@ -37,6 +39,11 @@ const XssProvider = (props) => {
 
     const { data } = await instance.get('/posts');
     setPosts(data.posts);
+    const dict = {};
+    data.posts.forEach(({postId, ...post}) => {
+      dict[postId] = post;
+    });
+    setPostDict(dict);
   };
 
   const updateDisplayText = async (newVal) => {
@@ -79,6 +86,10 @@ const XssProvider = (props) => {
     });
   }
 
+  const getPost = (postId) => {
+    return postDict[postId];
+  }
+
   return (
     <XssContext.Provider value={{
         username,
@@ -91,6 +102,7 @@ const XssProvider = (props) => {
         updateHyperlink,
         login,
         posts,
+        getPost,
       }} 
       { ...props }  
     />
