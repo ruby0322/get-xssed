@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 // import instance from "../axios";
 import { Descriptions } from "antd";
+import { LeftOutlined } from '@ant-design/icons';
 
 const PostPage = () => {
   const { postId } = useParams();
@@ -34,14 +35,19 @@ const PostPage = () => {
   It's important to note that quantitative analysis is a complex and specialized field, and successful implementation requires a combination of technical expertise, market knowledge, and continuous research and development.";
 
   return (
-    <Descriptions title="Article" layout="vertical" bordered column={1}>
-      <Descriptions.Item label="Title" contentStyle={{"font-size": "40px"}}>
-        {exampleTitle}
-      </Descriptions.Item>
-      <Descriptions.Item label="Content" contentStyle={{"font-size": "18px"}} >
-        {exampleParagraph}
-      </Descriptions.Item>
-    </Descriptions>
+    <>
+      <Descriptions title="Article" layout="vertical" bordered column={1}>
+        <Descriptions.Item label="Title" contentStyle={{"font-size": "40px"}}>
+          {exampleTitle}
+        </Descriptions.Item>
+        <Descriptions.Item label="Content" contentStyle={{"font-size": "18px"}} >
+          {exampleParagraph}
+        </Descriptions.Item>
+      </Descriptions>
+      <div style={{"padding": "20px"}}>
+        <LeftOutlined style={{ fontSize: '30px', color: '#08c' }}/>
+      </div>
+    </>
   );
 };
 
