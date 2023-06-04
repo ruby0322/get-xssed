@@ -6,3 +6,5 @@ const User = class {
         this.hyperlink = hyperlink;
     }
 };
+
+export default User;

@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Post from './Post.jsx';
 import { useXss } from '../hooks/xssContext.js';
 
-const postsData = [
-    { title: 'Fuck 1', content: 'yay 1' },
-    { title: 'Fuck 2', content: 'yay 2' },
-    { title: 'Fuck 3', content: 'yay 3' },
-];
+// const postsData = [
+//     { title: 'Fuck 1', content: 'yay 1' },
+//     { title: 'Fuck 2', content: 'yay 2' },
+//     { title: 'Fuck 3', content: 'yay 3' },
+// ];
 
 const Posts = () => {
     const { posts } = useXss();
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredPosts, setFilteredPosts] = useState(posts);
-    const [searchResult, setSearchResult] = React.useState(null);
+    const [searchResult, setSearchResult] = useState(null);
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
@@ -59,8 +59,8 @@ const Posts = () => {
             }}>
                 {
                     filteredPosts.map((post, index) => (
-                        <Post title={post.title} content={post.content} index={index} key={index} />
-                    ))
+                        <Post title={post.title} content={post.content} index={index} key={post.postId} />
+                        ))
                 }
             </div>
         </div>

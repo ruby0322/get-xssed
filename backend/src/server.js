@@ -2,10 +2,13 @@ import express, { application } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { db } from "./db.js";
+import Post from "./schema/post.js";
+import User from "./schema/user.js";
 import {
   collection,
   doc,
   addDoc,
+  setDoc,
   getDoc,
   getDocs,
   updateDoc,
@@ -70,6 +73,21 @@ app.get("/posts", async (req, res) => {
     })
     res.status(200).json({
       posts
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.post("/posts", async (req, res) => {
+  try {
+    const { title, content } = req.body;
+    const docRef = await addDoc(collection(db, "posts"), {
+      title,
+      content,
+    });
+    res.status(200).json({
+      postId: docRef.id,
     });
   } catch (error) {
     console.log(error);

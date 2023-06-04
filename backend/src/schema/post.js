@@ -4,3 +4,5 @@ const Post = class {
         this.content = content;
     }
 };
+
+export default Post;
