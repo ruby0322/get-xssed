@@ -7,10 +7,9 @@ const XssContext = createContext({
   imgUrl: '',
   hyperlink: '',
   posts: [],
-  updateDisplayText: () => { },
-  updateUsername: () => { },
-  updateImgUrl: () => { },
-  updateHyperlink: () => {},
+  updateUsername: async () => { },
+  updateImgUrl: async () => { },
+  updateWebsite: async () => {},
   getPost: () => {},
 });
 
@@ -46,25 +45,17 @@ const XssProvider = (props) => {
     setPostDict(dict);
   };
 
-  const updateDisplayText = async (newVal) => {
-    setDisplayText(newVal);
+  const updateWebsite = async (newDisplayText, newHyperlink) => {
+    console.log('我被呼叫了', newDisplayText, newHyperlink);
+    setDisplayText(newDisplayText);
+    setHyperlink(newHyperlink);
     await instance.put('/user', {
       username,
       imgUrl,
-      displayText: newVal,
-      hyperlink
+      displayText: newDisplayText,
+      hyperlink: newHyperlink,
     });
   };
-  
-  const updateHyperlink = async (newVal) => {
-    setHyperlink(newVal);
-    await instance.put('/user', {
-      username,
-      imgUrl,
-      displayText,
-      hyperlink: newVal
-    });
-  }
 
   const updateImgUrl = async (newVal) => {
     setImgUrl(newVal);
@@ -96,10 +87,9 @@ const XssProvider = (props) => {
         displayText,
         imgUrl,
         hyperlink,
-        updateDisplayText,
         updateUsername,
         updateImgUrl,
-        updateHyperlink,
+        updateWebsite,
         login,
         posts,
         getPost,

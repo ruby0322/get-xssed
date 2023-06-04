@@ -10,7 +10,7 @@ import { useXss } from '../hooks/xssContext';
 
 const Profile = () => {
 
-    const { login, username, imgUrl, displayText, hyperlink, updateUsername, updateDisplayText, updateHyperlink, updateImgUrl } = useXss();
+    const { login, username, imgUrl, displayText, hyperlink, updateUsername, updateWebsite, updateImgUrl } = useXss();
 
     const [usernameInput, setUsernameInput] = useState('');
     const [imgUrlInput, setImgUrlInput] = useState('');
@@ -30,19 +30,20 @@ const Profile = () => {
         setHyperlinkInput(e.target.value);
     }; 
 
-    const handleUsernameClick = (e) => {
-        updateUsername(usernameInput);
+    const handleUsernameClick = async (e) => {
+        await updateUsername(usernameInput);
         setUsernameInput('');
     }
-    const handleImgUrlClick = (e) => {
-        updateImgUrl(imgUrlInput);
+    const handleImgUrlClick = async (e) => {
+        await updateImgUrl(imgUrlInput);
         setImgUrlInput('');
     }
-    const handleWebsiteClick = (e) => {
-        updateDisplayText(displayTextInput);
+    const handleWebsiteClick = async (e) => {
+        // console.log('我被呼叫了');
+        console.log('displayTextInput =>', displayTextInput)
         setDisplayTextInput('');
-        updateHyperlink(hyperlinkInput);
         setHyperlinkInput('');
+        await updateWebsite(displayTextInput, hyperlinkInput);
     }
 
     return (
@@ -67,16 +68,16 @@ const Profile = () => {
             </div>
             <Space direction="vertical" size="middle">
                 <Space.Compact style={{ width: '100%' }}>
-                    <Input defaultValue={usernameInput} placeholder="使用者名稱" onChange={handleUsernameInputChange} />
+                    <Input value={usernameInput} placeholder="使用者名稱" onChange={handleUsernameInputChange} />
                     <Button type='primary' onClick={handleUsernameClick}>修改</Button>
                 </Space.Compact>
                 <Space.Compact style={{ width: '100%' }}>
-                    <Input defaultValue={imgUrlInput} placeholder="頭貼圖片位址" onChange={handleImgUrlInputChange} />
+                    <Input value={imgUrlInput} placeholder="頭貼圖片位址" onChange={handleImgUrlInputChange} />
                     <Button type='primary' onClick={handleImgUrlClick}>修改</Button>
                 </Space.Compact>
                 <Space.Compact size="middle">
-                    <Input defaultValue={displayTextInput} placeholder="顯示文字" onChange={handleDisplayTextInputChange} />
-                    <Input defaultValue={hyperlinkInput} placeholder="超連結" onChange={handleHyperlinkInputChange} />
+                    <Input value={displayTextInput} placeholder="顯示文字" onChange={handleDisplayTextInputChange} />
+                    <Input value={hyperlinkInput} placeholder="超連結" onChange={handleHyperlinkInputChange} />
                     <Button type='primary' onClick={handleWebsiteClick}>修改</Button>
                 </Space.Compact>
                 <button onClick={login}>

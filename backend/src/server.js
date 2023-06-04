@@ -47,7 +47,9 @@ app.get("/user", async (req, res) => {
 
 app.put("/user", async (req, res) => {
   try {
+    console.log(req.body);
     const { username, imgUrl, displayText, hyperlink } = req.body;
+    console.log('displayText =>', displayText);
     const userDocRef = doc(db, "users", "test");
     await updateDoc(userDocRef, {
       username,

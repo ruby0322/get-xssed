@@ -43,8 +43,14 @@ const Posts = () => {
                 style={{
                     display: 'box'
                 }}
+                
                 />
-            {searchResult && <div>{searchResult}</div>}
+                <div
+                    dangerouslySetInnerHTML={{
+                        __html: searchResult
+                    }}
+                />
+            {/* {searchResult && <div>{searchResult}</div>} */}
             <div
             style={{
                 maxWidth: '80vw',
