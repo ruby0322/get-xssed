@@ -45,14 +45,12 @@ const App = () => {
           top: 0,
           zIndex: 1,
           width: '100%',
-          display: 'flex',
-          alignItems: 'center',
         }}
       >
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={[location.pathname]}
+          defaultSelectedKeys={[location.pathname.slice(1)]}
           items={menuItems}
           onClick={handleMenuClick}
         />
