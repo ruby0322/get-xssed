@@ -1,16 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Post from './Post.jsx';
+import instance from "../axios.js";
 
-const postsData = [
-    { title: 'Fuck 1', content: 'yay 1' },
-    { title: 'Fuck 2', content: 'yay 2' },
-    { title: 'Fuck 3', content: 'yay 3' },
-];
+// const postsData = [
+//     { title: 'Fuck 1', content: 'yay 1' },
+//     { title: 'Fuck 2', content: 'yay 2' },
+//     { title: 'Fuck 3', content: 'yay 3' },
+// ];
 
 const Posts = () => {
+    const [postsData, setPostsData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredPosts, setFilteredPosts] = useState(postsData);
     const [searchResult, setSearchResult] = React.useState(null);
+
+
+    const fetchPosts = async () => {
+        try {
+            const res = await instance.get('/posts');
+            setPostsData(res.data.posts);
+            console.log(res.data.posts);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchPosts();
+    }, [setPostsData]);
+
 
 
     const handleKeyPress = (e) => {
@@ -58,7 +76,7 @@ const Posts = () => {
             >
                 {
                     filteredPosts.map((post, index) => (
-                        <Post title={post.title} content={post.content} index={index} key={index} />
+                        <Post title={post.title} content={post.content} index={index} key={post.postId} />
                         ))
                     }
             </div>
