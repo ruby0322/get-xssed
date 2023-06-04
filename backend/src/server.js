@@ -1,7 +1,16 @@
 import express, { application } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import { db } from "db";
+import { db } from "./db.js";
+import {
+  collection,
+  doc,
+  addDoc,
+  getDoc,
+  getDocs,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
 
 const app = express();
 const port = process.env.PORT || 4000;
