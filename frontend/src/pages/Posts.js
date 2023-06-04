@@ -59,8 +59,8 @@ const Posts = () => {
             }}>
                 {
                     filteredPosts.map((post, index) => (
-                        <Post title={post.title} content={post.content} index={index} key={post.postId} />
-                        ))
+                        <Post title={post.title} content={post.content} index={post.postId} key={post.postId} />
+                    ))
                 }
             </div>
         </div>
