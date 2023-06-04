@@ -52,7 +52,7 @@ const App = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={[location.pathname]}
+          defaultSelectedKeys={[location.pathname.slice(1)]}
           items={menuItems}
           onClick={handleMenuClick}
         />
