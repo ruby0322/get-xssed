@@ -6,18 +6,14 @@ import instance from '../axios';
 
 import { db } from '../db';
 
+import { useXss } from '../hooks/xssContext';
+
 const Profile = () => {
 
-    useEffect(() => {
-    }, []);
-
-    const [username, setUsername] = useState('');
-    const [imgUrl, setImgUrl] = useState('');
-    const [displayText, setDisplayText] = useState('');
-    const [hyperlink, setHyperlink] = useState('');
+    const { login, username, imgUrl, displayText, hyperlink, setUsername, setDisplayText, setHyperlink, setImgUrl } = useXss();
 
     const [usernameInput, setUsernameInput] = useState('');
-    const [imgUrlInput, setImgUrlInput] = useState('https://wallpaperaccess.com/full/275808.jpg');
+    const [imgUrlInput, setImgUrlInput] = useState('');
     const [displayTextInput, setDisplayTextInput] = useState('');
     const [hyperlinkInput, setHyperlinkInput] = useState('');
 
@@ -47,12 +43,6 @@ const Profile = () => {
         setDisplayTextInput('');
         setHyperlink(hyperlinkInput);
         setHyperlinkInput('');
-    }
-
-    const handleTokenClick = async () => {
-        const { data: token } = await instance.post('/login');
-        console.log(token);
-        document.cookie = `xss-token=${token}`
     }
 
     return (
@@ -89,8 +79,8 @@ const Profile = () => {
                     <Input defaultValue={hyperlinkInput} placeholder="超連結" onChange={handleHyperlinkInputChange} />
                     <Button type='primary' onClick={handleWebsiteClick}>修改</Button>
                 </Space.Compact>
-                <button onClick={handleTokenClick}>
-                    Get Access Token
+                <button onClick={login}>
+                    使用者登入
                 </button>
             </Space>
         </Card>

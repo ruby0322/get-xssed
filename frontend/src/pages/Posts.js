@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Post from './Post.jsx';
-import instance from "../axios.js";
+import { useXss } from '../hooks/xssContext.js';
 
 // const postsData = [
 //     { title: 'Fuck 1', content: 'yay 1' },
@@ -9,27 +9,10 @@ import instance from "../axios.js";
 // ];
 
 const Posts = () => {
-    const [postsData, setPostsData] = useState([]);
+    const { posts } = useXss();
     const [searchTerm, setSearchTerm] = useState('');
-    const [filteredPosts, setFilteredPosts] = useState(postsData);
+    const [filteredPosts, setFilteredPosts] = useState(posts);
     const [searchResult, setSearchResult] = React.useState(null);
-
-
-    const fetchPosts = async () => {
-        try {
-            const res = await instance.get('/posts');
-            setPostsData(res.data.posts);
-            console.log(res.data.posts);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    useEffect(() => {
-        fetchPosts();
-    }, [setPostsData]);
-
-
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
@@ -40,7 +23,6 @@ const Posts = () => {
             setFilteredPosts(filtered);
         }
     };
-
     
     return (
         <>
@@ -48,8 +30,8 @@ const Posts = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-                alignContent: 'center',
-                flexDirection: 'column',
+            alignContent: 'center',
+            flexDirection: 'column',
             gap: '1rem'
         }}>
             <input
@@ -65,13 +47,15 @@ const Posts = () => {
             {searchResult && <div>{searchResult}</div>}
             <div
             style={{
-                width: '55vw',
+                maxWidth: '80vw',
+                width: '45rem',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 alignContent: 'center',
                 height: '100%',
                 flexWrap: 'wrap',
+                gap: '0.5rem'
             }}
             >
                 {
