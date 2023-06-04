@@ -10,20 +10,25 @@ const postsData = [
 
 const Posts = () => {
     return (
-        <>
+        <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center'
+        }}>
             <div style={{
-                width: 1000,
+                width: '50vw',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                height: 100,
                 flexWrap: 'wrap'
             }}>
-                {postsData.map((post, index) => (
-                    <Post title={post.title} content={post.content} index={index} key={index} />
-                ))}
+                {
+                    postsData.map((post, index) => (
+                        <Post title={post.title} content={post.content} index={`post-${index}`} key={index} />
+                    ))
+                }
             </div >
-        </>
+        </div>
     )
 }
 
