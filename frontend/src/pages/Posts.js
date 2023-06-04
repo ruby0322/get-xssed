@@ -12,7 +12,7 @@ const Posts = () => {
     const { posts } = useXss();
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredPosts, setFilteredPosts] = useState(posts);
-    const [searchResult, setSearchResult] = React.useState(null);
+    const [searchResult, setSearchResult] = useState(null);
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
@@ -56,13 +56,12 @@ const Posts = () => {
                 height: '100%',
                 flexWrap: 'wrap',
                 gap: '0.5rem'
-            }}
-            >
+            }}>
                 {
                     filteredPosts.map((post, index) => (
                         <Post title={post.title} content={post.content} index={index} key={post.postId} />
                         ))
-                    }
+                }
             </div>
         </div>
         </>
