@@ -10,7 +10,7 @@ import { useXss } from '../hooks/xssContext';
 
 const Profile = () => {
 
-    const { login, username, imgUrl, displayText, hyperlink, setUsername, setDisplayText, setHyperlink, setImgUrl } = useXss();
+    const { login, username, imgUrl, displayText, hyperlink, updateUsername, updateDisplayText, updateHyperlink, updateImgUrl } = useXss();
 
     const [usernameInput, setUsernameInput] = useState('');
     const [imgUrlInput, setImgUrlInput] = useState('');
@@ -31,17 +31,17 @@ const Profile = () => {
     }; 
 
     const handleUsernameClick = (e) => {
-        setUsername(usernameInput);
+        updateUsername(usernameInput);
         setUsernameInput('');
     }
     const handleImgUrlClick = (e) => {
-        setImgUrl(imgUrlInput);
+        updateImgUrl(imgUrlInput);
         setImgUrlInput('');
     }
     const handleWebsiteClick = (e) => {
-        setDisplayText(displayTextInput);
+        updateDisplayText(displayTextInput);
         setDisplayTextInput('');
-        setHyperlink(hyperlinkInput);
+        updateHyperlink(hyperlinkInput);
         setHyperlinkInput('');
     }
 

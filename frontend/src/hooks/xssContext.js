@@ -7,12 +7,10 @@ const XssContext = createContext({
   imgUrl: '',
   hyperlink: '',
   posts: [],
-  setUsername: () => {},
-  setDisplayText: () => { },
-  setImgUrl: () => { },
-  setHyperlink: () => { },
-  login: () => { },
-  setPosts: () => {},
+  updateDisplayText: () => { },
+  updateUsername: () => { },
+  updateImgUrl: () => { },
+  updateHyperlink: () => {},
 });
 
 const XssProvider = (props) => {
@@ -41,16 +39,56 @@ const XssProvider = (props) => {
     setPosts(data.posts);
   };
 
+  const updateDisplayText = async (newVal) => {
+    setDisplayText(newVal);
+    await instance.put('/user', {
+      username,
+      imgUrl,
+      displayText: newVal,
+      hyperlink
+    });
+  };
+  
+  const updateHyperlink = async (newVal) => {
+    setHyperlink(newVal);
+    await instance.put('/user', {
+      username,
+      imgUrl,
+      displayText,
+      hyperlink: newVal
+    });
+  }
+
+  const updateImgUrl = async (newVal) => {
+    setImgUrl(newVal);
+    await instance.put('/user', {
+      username,
+      imgUrl: newVal,
+      displayText,
+      hyperlink
+    });
+  }
+
+  const updateUsername = async (newVal) => {
+    setUsername(newVal);
+    await instance.put('/user', {
+      username: newVal,
+      imgUrl,
+      displayText,
+      hyperlink
+    });
+  }
+
   return (
     <XssContext.Provider value={{
         username,
         displayText,
         imgUrl,
         hyperlink,
-        setUsername,
-        setDisplayText,
-        setImgUrl,
-        setHyperlink,
+        updateDisplayText,
+        updateUsername,
+        updateImgUrl,
+        updateHyperlink,
         login,
         posts,
       }} 
