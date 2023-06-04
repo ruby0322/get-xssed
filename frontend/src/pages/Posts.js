@@ -16,7 +16,7 @@ const Posts = () => {
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            const filtered = postsData.filter((post) =>
+            const filtered = posts.filter((post) =>
                 post.title.toLowerCase().includes(searchTerm.toLowerCase())
             );
             setSearchResult(`Result of "${searchTerm}":`);
