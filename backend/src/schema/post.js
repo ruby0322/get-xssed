@@ -1,6 +1,5 @@
 const Post = class {
-    constructor(postId, title, content) {
-        this.postId = postId;
+    constructor(title, content) {
         this.title = title;
         this.content = content;
     }
