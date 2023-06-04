@@ -23,31 +23,46 @@ const Posts = () => {
         }
     };
 
-
+    
     return (
         <>
-            <div
+        <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+                alignContent: 'center',
+                flexDirection: 'column',
+            gap: '1rem'
+        }}>
+            <input
+                type="text"
+                placeholder="Search by title"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyPress={handleKeyPress}
                 style={{
-                    width: 1000,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: 100,
-                    flexWrap: 'wrap',
+                    display: 'box'
                 }}
-            >
-                <input
-                    type="text"
-                    placeholder="Search by title"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    onKeyPress={handleKeyPress}
                 />
-                {searchResult && <div>{searchResult}</div>}
-                {filteredPosts.map((post, index) => (
-                    <Post title={post.title} content={post.content} index={index} key={index} />
-                ))}
+            {searchResult && <div>{searchResult}</div>}
+            <div
+            style={{
+                width: '55vw',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                alignContent: 'center',
+                height: '100%',
+                flexWrap: 'wrap',
+            }}
+            >
+                {
+                    filteredPosts.map((post, index) => (
+                        <Post title={post.title} content={post.content} index={index} key={index} />
+                        ))
+                    }
             </div>
+        </div>
         </>
     );
 
