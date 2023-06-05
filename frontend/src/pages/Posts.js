@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Post from './Post.jsx';
 import { useXss } from '../hooks/xssContext.js';
+import { useNavigate } from 'react-router-dom';
 
 // const postsData = [
 //     { title: 'Fuck 1', content: 'yay 1' },
@@ -9,6 +10,7 @@ import { useXss } from '../hooks/xssContext.js';
 // ];
 
 const Posts = () => {
+    const navigate = useNavigate();
     const { posts } = useXss();
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredPosts, setFilteredPosts] = useState(posts);
@@ -21,6 +23,7 @@ const Posts = () => {
             );
             setSearchResult(`Result of "${searchTerm}":`);
             setFilteredPosts(filtered);
+            navigate('')
         }
     };
     

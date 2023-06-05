@@ -8,7 +8,7 @@ const { Meta } = Card;
 const Post = ({ title, content, index }) => {
     const navigate = useNavigate();
     const handleIconClick = () => {
-        const postUrl = `/posts/${index}`;
+        const postUrl = `/posts/${index}?prev=`;
         navigate(postUrl);
     };
     return (

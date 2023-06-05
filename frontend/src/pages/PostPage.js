@@ -11,7 +11,8 @@ const PostPage = (props) => {
   const { getPost } = useXss();
 
   const back = () => {
-    console.log(window.location);
+    const params = new URLSearchParams(window.location);
+    
   }
 
   return (
