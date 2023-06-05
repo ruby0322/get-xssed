@@ -81,6 +81,17 @@ app.get("/posts", async (req, res) => {
   }
 });
 
+app.get("/post/:postId", async (req, res) => {
+  try {
+    const postId = req.params.postId;
+    const postRef = doc(db, "posts", postId);
+    const postSnap = await getDoc(postRef);
+    res.status(200).json(postSnap.data());
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 app.post("/posts", async (req, res) => {
   try {
     const { title, content } = req.body;
