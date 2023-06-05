@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 // import instance from "../axios";
 import { Descriptions } from "antd";
@@ -10,9 +10,18 @@ const PostPage = (props) => {
   const { postId } = useParams();
   const { getPost } = useXss();
 
-  const back = () => {
-    console.log(window.location);
-  }
+  // const back = () => {
+  //   console.log(window.location);
+  // }
+
+  const navigate = useNavigate();
+  const goBack = () => {
+    const postUrl = `/posts`;
+    navigate({
+      pathname: postUrl,
+      // search: "?where=back",
+    });
+  };
 
   return (
     <>
@@ -24,7 +33,7 @@ const PostPage = (props) => {
           {getPost(postId) && getPost(postId).content}
         </Descriptions.Item>
       </Descriptions>
-      <div style={{padding: "20px", cursor: 'pointer'}} onClick={back}>
+      <div style={{padding: "20px", cursor: 'pointer'}} onClick={goBack}>
         <LeftOutlined style={{ fontSize: '30px', color: '#08c' }}/>
       </div>
     </>
