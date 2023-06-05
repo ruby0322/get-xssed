@@ -6,11 +6,11 @@ const XssContext = createContext({
   displayText: '',
   imgUrl: '',
   hyperlink: '',
-  posts: [],
+  // posts: [],
   updateUsername: async () => { },
   updateImgUrl: async () => { },
   updateWebsite: async () => {},
-  getPost: () => {},
+  // getPost: () => {},
 });
 
 const XssProvider = (props) => {
@@ -20,8 +20,8 @@ const XssProvider = (props) => {
   const [displayText, setDisplayText] = useState('');
   const [hyperlink, setHyperlink] = useState('');
 
-  const [posts, setPosts] = useState([]);
-  const [postDict, setPostDict] = useState({});
+  // const [posts, setPosts] = useState([]);
+  // const [postDict, setPostDict] = useState({});
 
   const login = async () => {
     const { data: user } = await instance.get('/user');
@@ -33,16 +33,15 @@ const XssProvider = (props) => {
     const { data: token } = await instance.post('/login');
     console.log(token);
     document.cookie = `xss-token=${token}`;
-
     console.log('logged in successfully!');
 
-    const { data } = await instance.get('/posts');
-    setPosts(data.posts);
-    const dict = {};
-    data.posts.forEach(({postId, ...post}) => {
-      dict[postId] = post;
-    });
-    setPostDict(dict);
+    // const { data } = await instance.get('/posts');
+    // setPosts(data.posts);
+    // const dict = {};
+    // data.posts.forEach(({postId, ...post}) => {
+    //   dict[postId] = post;
+    // });
+    // setPostDict(dict);
   };
 
   const updateWebsite = async (newDisplayText, newHyperlink) => {
@@ -77,9 +76,9 @@ const XssProvider = (props) => {
     });
   }
 
-  const getPost = (postId) => {
-    return postDict[postId];
-  }
+  // const getPost = (postId) => {
+  //   return postDict[postId];
+  // }
 
   return (
     <XssContext.Provider value={{
@@ -91,8 +90,8 @@ const XssProvider = (props) => {
         updateImgUrl,
         updateWebsite,
         login,
-        posts,
-        getPost,
+        // posts,
+        // getPost,
       }} 
       { ...props }  
     />
