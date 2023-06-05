@@ -27,11 +27,6 @@ const PostPage = (props) => {
     }
   };
 
-<<<<<<< HEAD
-  const back = () => {
-    const params = new URLSearchParams(window.location);
-    
-=======
   useEffect(() => {
     fetchPostPage();
   }, [setPostPage]);
@@ -44,7 +39,6 @@ const PostPage = (props) => {
         query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
     }
     return query;
->>>>>>> e1001f37b7425bee39da54ecf601d6f775121d88
   }
 
   const location = useLocation();
