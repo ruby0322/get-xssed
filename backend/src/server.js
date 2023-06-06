@@ -1,9 +1,7 @@
 import express, { application } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-<<<<<<< HEAD
-import { db } from "./db";
-=======
+
 import { db } from "./db.js";
 import {
   collection,
@@ -14,7 +12,6 @@ import {
   updateDoc,
   deleteDoc,
 } from "firebase/firestore";
->>>>>>> 81b5ab1e833503ace850781c96b9b9bcc8a8274f
 
 const app = express();
 const port = process.env.PORT || 4000;

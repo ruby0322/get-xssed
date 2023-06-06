@@ -1,0 +1,56 @@
+Arguments: 
+  /opt/homebrew/Cellar/node/20.2.0/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js
+
+PATH: 
+  /opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/Users/changhechia/anaconda3/bin:/Users/changhechia/anaconda3/condabin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  20.2.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error [ERR_SOCKET_CONNECTION_TIMEOUT]: Socket connection timeout
+      at new NodeError (node:internal/errors:399:5)
+      at internalConnectMultiple (node:net:1099:20)
+      at Timeout.internalConnectMultipleTimeout (node:net:1638:3)
+      at listOnTimeout (node:internal/timers:575:11)
+      at process.processTimers (node:internal/timers:514:7)
+
+npm manifest: 
+  {
+    "name": "backend",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "dependencies": {
+      "@line/bot-sdk": "^7.5.2",
+      "cors": "^2.8.5",
+      "dotenv-defaults": "^5.0.2",
+      "express": "^4.18.2",
+      "firebase": "^9.22.0",
+      "linebot": "^1.6.1",
+      "nodemon": "^2.0.20",
+      "ws": "^8.13.0"
+    },
+    "devDependencies": {
+      "@babel/cli": "^7.19.3",
+      "@babel/core": "^7.20.2",
+      "@babel/node": "^7.20.2",
+      "@babel/plugin-proposal-class-properties": "^7.18.6",
+      "@babel/preset-env": "^7.20.2"
+    },
+    "scripts": {
+      "server": "nodemon src/server.js --ext js --watch src --exec babel-node"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
