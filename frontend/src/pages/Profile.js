@@ -59,7 +59,7 @@ const Profile = () => {
             <div>
                 <ul>
                     <li>
-                        @ {username}
+                        {username}
                     </li>
                     <li>
                         <a href={hyperlink}>{displayText}</a>

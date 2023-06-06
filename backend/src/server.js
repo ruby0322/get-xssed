@@ -1,10 +1,6 @@
 import express, { application } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-<<<<<<< HEAD
-
-=======
->>>>>>> 764f30f8abd799427e83a93fa9a6c38ab4687760
 import { db } from "./db.js";
 import Post from "./schema/post.js";
 import User from "./schema/user.js";
