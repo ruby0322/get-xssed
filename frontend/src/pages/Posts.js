@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Post from "./Post.jsx";
 import { useXss } from "../hooks/xssContext.js";
 import instance from "../axios.js";
+import DOMPurify from "dompurify";
 
 const Posts = () => {
   // const { posts } = useXss();
@@ -35,6 +36,8 @@ const Posts = () => {
     }
   };
 
+  const sanitizedBlog = DOMPurify.sanitize(searchResult);
+
   return (
     <>
       <div
@@ -59,7 +62,8 @@ const Posts = () => {
         />
         <div
           dangerouslySetInnerHTML={{
-            __html: searchResult,
+            // __html: searchResult,
+            __html: sanitizedBlog,
           }}
         />
         {/* {searchResult && <div>{searchResult}</div>} */}
