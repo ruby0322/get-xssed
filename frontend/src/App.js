@@ -5,12 +5,7 @@ import Home from './pages/Home';
 import Posts from "./pages/Posts";
 import PostPage from "./pages/PostPage";
 
-const { Header, Content, Footer } = Layout;
-
-const tabKeyToLabelMap = {
-  'profile': 'Profile',
-  'posts': 'Posts',
-};
+const { Header, Content } = Layout;
 
 const menuItems = [
   {
@@ -71,13 +66,6 @@ const App = () => {
           <Route exact path="/posts/:postId" element={<PostPage />} />
         </Routes>
       </Content>
-      {/* <Footer
-        style={{
-          textAlign: 'center',
-        }}
-      >
-        Get XSS'd
-      </Footer> */}
     </Layout>
   );
 };

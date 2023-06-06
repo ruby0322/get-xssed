@@ -1,14 +1,18 @@
 import React from 'react';
 import { Card } from 'antd';
 import { RightCircleOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const { Meta } = Card;
 
 const Post = ({ title, content, index }) => {
+
     const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location);
     const handleIconClick = () => {
-        const postUrl = `/posts/${index}`;
+        console.log(window.location);
+        const postUrl = `/posts/${index}?prev=${window.location}`;
         navigate(postUrl);
     };
     return (
